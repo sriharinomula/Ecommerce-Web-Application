@@ -1,0 +1,56 @@
+<app-navbar></app-navbar>
+<h1>USERS FEEDBACK</h1>
+<div [hidden]="!isSortOpen">
+<button class="button button1" (click)="sort()">Sort</button>
+<button class="button button1" (click)="filter()">Filter</button>
+<button class="button button1"  (click)="routeNew()"  >Add product</button>
+
+<form #searchForm="ngForm">
+<input type="text" placeholder="Search.." name="search" [(ngModel)]="formData.search" >
+<button  class="button button1" (click)="searching()">Search</button>
+</form>
+</div>
+<table id="users">
+    <tr>
+      <th >
+        FEEDBACKID
+      </th>
+      <th >
+        USERID
+      </th>
+      <th >
+        NAME
+      </th>
+      <th >
+        EMAIL
+      </th>
+      <th >
+         RATING
+      </th>
+      <th >
+             REVIEW
+      </th>
+    </tr>
+  
+    <tr *ngFor = "let data of reviews['0']">
+      <td >
+        {{ data['info']['_id'] }}
+        </td>
+      <td >
+        {{ data['_id'] }}
+      </td>
+      <td >
+        {{ data['info']['name'] }}
+      </td>
+      <td >
+        {{ data['email'] }}
+      </td>
+      <td >
+        {{ data['rating'] }}
+      </td>
+      <td >
+        {{ data['review'] }}
+      </td>
+    </tr>
+  
+  </table>

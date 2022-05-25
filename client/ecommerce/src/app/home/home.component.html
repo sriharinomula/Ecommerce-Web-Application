@@ -1,0 +1,60 @@
+<app-navbar></app-navbar>
+<br>
+
+<br>
+<div class="body">
+    <div class="card" routerLink="result" [queryParams]="{category:'smartphones',search:'iPhone 9'}" routerLinkActive="active">
+        <img src="https://dummyjson.com/image/i/products/1/1.jpg" alt="Avatar" style="width:100%">
+        <div class="container">
+          <h4><b>iPhone 9</b></h4> 
+          
+        </div>
+      </div>
+      
+      <div class="card" routerLink="result" [queryParams]="{category:'laptops',search:'MacBook Pro'}" routerLinkActive="active" >
+        <img src="https://dummyjson.com/image/i/products/6/1.png" alt="Avatar" style="width:100%">
+        <div class="container">
+          <h4><b>MacBook Pro</b></h4> 
+          
+        </div>
+      </div>
+      
+      <div class="card" routerLink="result" [queryParams]="{category:'fragrances',search:'perfume Oil'}" routerLinkActive="active">
+        <img src="https://dummyjson.com/image/i/products/11/1.jpg" alt="Avatar" style="width:100%">
+        <div class="container">
+          <h4><b>perfume Oil</b></h4> 
+           
+        </div>
+      </div>
+      
+      <div class="card" routerLink="result" [queryParams]="{category:'home-decoration',search:'Key Holder'}" routerLinkActive="active">
+        <img src="https://dummyjson.com/image/i/products/30/1.jpg" alt="Avatar" style="width:100%">
+        <div class="container">
+          <h4><b>Key Holder</b></h4> 
+        </div>
+      </div>
+</div>
+<!--<div *ngFor="let item from product">
+  <img src="{{item.image.0}}" style="width:100%">
+  <h3>{{item.title}}</h3>
+
+</div>-->
+
+<!--<div class="body" *ngFor="let prod of product">
+  <div class="card"  [routerLink]="['result']" queryParams="{category:'{{prod[0].category}}',search:'{{prod[0].title}}'}" routerLinkActive="active">
+
+  <img src="{{prod['0']['images']['0']}}" style="width:100%">
+  <div class="container">
+    <h4><b>{{prod['0']['title']}}</b></h4> 
+    
+  </div>
+  </div>-->
+  <!--<div class="card"  routerLink="result" [queryParams]="{category:'{{prod[1][category]}}',search:'{{prod[1][title]}}'}"></div>
+  <img src="{{prod['1']['images']['0']}}" style="width:100%">
+  <div class="container">
+    <h4><b>{{prod['1']['title']}}</b></h4> 
+    
+  </div>
+
+</div>-->
+

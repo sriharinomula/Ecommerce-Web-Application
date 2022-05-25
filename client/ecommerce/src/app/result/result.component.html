@@ -1,0 +1,141 @@
+<app-navbar></app-navbar>
+<br>
+<br>
+<div class="card" *ngFor="let item of product">
+    <img src="{{item.images['0']}}" style="width:100%">
+    <br>
+    <h2 style="text-align:center">{{item.title}}</h2>
+    <br>
+    <p>{{item.description}}</p>
+    <br>
+    <b>category:{{item.category}}</b>
+    <br>
+    <br>
+    <b class="price">Price:{{item.price}}</b>
+    <br>
+    <br>
+    <div class="buttons">
+    <button class="cart"  (click)="addCart()">AddToCart</button>
+    </div>
+    
+    <button class="Delete" *ngIf="isAdmin" (click)="deleteProd()" >Delete</button>
+    <br>
+    <!--<button class="Add" *ngIf="isAdmin" (click)="routeNew()"  >Add product</button>-->
+    
+    
+    
+    
+</div>
+
+<div [hidden]="!isUpdateFormOpen">
+    <form #updateProdForm="ngForm" id="new">
+        <div class="form-group">
+          <label for="title">Title:</label>
+          <br>
+          <input type="text"
+                 class="form-control"
+                 [(ngModel)]="formData.title"
+                 name="title"
+                 
+                 #title="ngModel"
+                 id="title"
+                 required />
+        </div>
+        <div class="error" *ngIf="title.invalid && (title.dirty || title.touched)"
+          class="alert alert-danger">
+          <div *ngIf="title.errors">
+            Title is required
+          </div>
+        </div>
+    
+        <br>
+    
+        <div class="form-group">
+          <label for="description">Description:</label>
+          <input type="text"
+                 class="form-control"
+                  [(ngModel)]="formData.description"
+                  name="description"
+                  #description="ngModel"
+                  id="des"
+                 required minlength="6" />
+        </div>
+        <div class="error" *ngIf="description.invalid && (description.dirty || description.touched)"
+          class="alert alert-danger">
+          <div *ngIf="description.errors">
+            Description is required
+          </div>
+          <div *ngIf="description.errors">Description must be atleast 6 characters</div>
+        </div>
+        <br>
+        <div class="form-group">
+          <label for="category">Category:</label>
+          <br>
+          <input type="text"
+          class="form-control"
+          [(ngModel)]="formData.category"
+          name="category"
+          #category="ngModel"
+          id="catg"
+          required />
+        </div>
+        <div class="error" *ngIf="category.invalid && (category.dirty || category.touched)"
+          class="alert alert-danger">
+          <div *ngIf="category.errors">
+            Category is required
+          </div>
+        </div>
+        <br>
+          <div class="form-group">
+            <label for="price">Price:</label>
+            <br>
+            <input type="text"
+            class="form-control"
+            [(ngModel)]="formData.price"
+            name="price"
+            #price="ngModel"
+            id="price"
+            required />
+          </div>
+          <div class="error" *ngIf="price.invalid && (price.dirty || price.touched)"
+            class="alert alert-danger">
+            <div *ngIf="category.errors">
+              Price is required
+            </div>
+          </div>
+          <br>
+    
+            <div class="form-group">
+                <label for="images">ImageUrl:</label>
+                <br>
+                <input type="text"
+                class="form-control"
+                [(ngModel)]="formData.images"
+                name="images"
+                #images="ngModel"
+                id="url"
+                required />
+              </div>
+              <div class="error" *ngIf="images.invalid && (images.dirty || images.touched)"
+                class="alert alert-danger">
+                <div *ngIf="category.errors">
+                  Image Url is required
+                </div>
+                </div>
+                <br>
+      
+    
+
+      <button 
+      type="submit" 
+      class="btn btn-warning"
+      [disabled] = "!updateProdForm.form.valid"
+      (click)="update()">
+              submit
+            </button>
+
+            <button type="button" (click)="close()">Close</button>
+
+      </form>
+  </div>
+

@@ -1,0 +1,94 @@
+<body>
+<div class="container">
+  <h2 class="page-title">User Registration</h2>
+    <div class="register">
+      <div class="col-md-5">
+        
+        <form #registerForm="ngForm" id="register">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text"
+                   class="form-control"
+                   [(ngModel)]="formData.name"
+                   name="username"
+                   #username="ngModel"
+                   id="Uname"
+                   required />
+          </div>
+          <div class="error" *ngIf="username.invalid && (username.dirty || username.touched)"
+            >
+            <div *ngIf="username.errors">
+              Username is required
+            </div>
+          </div>
+          <br>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <br>
+            <input type="email"
+                   class="form-control"
+                   [(ngModel)]="formData.email"
+                    name="email"
+                    #email="ngModel"
+                    id="email"
+                   required pattern="[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$"/>
+          </div>
+          <div *ngIf="email.invalid && (email.dirty || email.touched)"
+            class="error">
+            <div *ngIf="email.errors && email.errors['required']">
+              Email is required
+            </div>
+            <div *ngIf="email.errors && email.errors['pattern']">Enter valid Email</div>
+          </div>
+          <br>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password"
+                   class="form-control"
+                    [(ngModel)]="formData.password"
+                    name="password"
+                    #password="ngModel"
+                    id="Pass"
+                   required minlength="6" />
+          </div>
+          <div *ngIf="password.invalid && (password.dirty || password.touched)"
+            class="error">
+            <div *ngIf="password.errors && password.errors['required']">
+              Password is required
+            </div>
+            <div *ngIf="password.errors && password.errors['minlength']">Password must be atleast 6 characters</div>
+          </div>
+          <br>
+          <div class="form-group">
+            <label for="role">Role</label>
+            <br>
+            <select name="role" [(ngModel)]="formData.role" #role="ngModel" id="role" required>
+                <option  name="user" value="user">User</option>
+                <option  name="admin" value="admin">Admin</option>
+            </select>
+          </div>
+          <div class="error" *ngIf="role.invalid && (role.dirty || role.touched)"
+            >
+            <div *ngIf="role.errors">
+              Role is required
+            </div>
+          </div>
+          <br>
+          <button 
+    type="submit" 
+    class="btn btn-warning"
+    [disabled] = "!registerForm.form.valid"
+    id="reg"
+    (click)="register()">
+              Register
+            </button>
+          
+        </form>
+        <br>
+        <button type="button" id="log" (click)="login()">Login</button>
+      </div>
+    </div>
+</div>
+<b class="error">{{response["data"]}}</b>
+</body>
+       

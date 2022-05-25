@@ -1,0 +1,67 @@
+<body>
+  <h2>FEEDBACK</h2>
+<div class="feedback">
+    <form #addFeedbackForm="ngForm">
+        <div class="form-group">
+          <label for="review">Review: </label>
+          <br>
+          <input type="text"
+                 class="form-control"
+                 [(ngModel)]="formData.review"
+                 name="review"
+                 id="review"
+                 #review="ngModel"
+                 required />
+        </div>
+        <div *ngIf="review.invalid && (review.dirty || review.touched)"
+          class="error">
+          <div *ngIf="review.errors">
+            Review is required
+          </div>
+        </div>
+       <br>
+       <br>
+        <div class="form-group">
+          <label for="rating">Rating: </label>
+          <br>
+          <select [(ngModel)]="formData.rating"  name="rating" #rating="ngModel" id="rating" required>
+            <option value="">--Category--</option>
+            
+            <option  name="1star" value="1">1</option>
+            
+            <option  name="2star" value="2">2</option>
+            
+            <option  name="3star" value="3">3</option>
+
+            <option name="4star" value="4">4</option>
+
+            <option name="5star" value="5">5</option>
+
+          </select>
+
+        </div>
+
+        <div *ngIf="rating.invalid && (rating.dirty || rating.touched)"
+          class="error">
+          <div *ngIf="rating.errors">
+            Rating is required
+          </div>
+        </div>
+        <br>
+        <br>
+        <button 
+        type="submit" 
+        class="btn btn-warning"
+        id="submit"
+        [disabled] = "!addFeedbackForm.form.valid"
+        (click)="userFeed()">
+                submit
+              </button>
+              <br>
+              <br>
+
+              <button type="button" id="close" (click)="closeFeed()">Close</button>
+
+        </form>
+</div>
+</body>

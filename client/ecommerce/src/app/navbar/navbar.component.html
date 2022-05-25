@@ -1,0 +1,91 @@
+
+<body>
+
+    <div class="topnav">
+      <button class="active" (click)="goHome()">Home</button>
+      <button (click)="profile()">Profile</button>
+      <button *ngIf="isAdmin" (click)="admin()">Admin</button>
+      <button *ngIf="!isAdmin" (click)="feedback()">Feedback</button>
+      <button (click)="logout()">Logout</button>
+      <div class="search-container">
+        <form >
+          <select name="category" [(ngModel)]="category">
+
+            <option value="">--Category--</option>
+            
+            <option  name="smartphones" value="smartphones">Smartphones</option>
+            
+            <option  name="laptops" value="laptops">Laptops</option>
+            
+            <option  name="fragrances" value="fragrances">Fragrance</option>
+
+            <option name="watch" value="watch">Watch</option>
+            
+            </select>
+          <input type="text" placeholder="Search.." name="search" [(ngModel)]="search" >
+          <button><a routerLink="result" [queryParams]="{category,search}" routerLinkActive="active">Submit</a></button>
+          
+        </form>
+      </div>
+    </div>
+   <!--<div [hidden]="!isFeedbackOpen">
+     <div id="blackout">
+      <div id="box">
+      <form #addFeedbackForm="ngForm">
+        <div class="form-group">
+          <label for="review">Review:</label>
+          <input type="text"
+                 class="form-control"
+                 [(ngModel)]="formData.review"
+                 name="review"
+                 #review="ngModel"
+                 required />
+        </div>
+        <div *ngIf="review.invalid && (review.dirty || review.touched)"
+          class="alert alert-danger">
+          <div *ngIf="review.errors">
+            Review is required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="rating">Rating</label>
+          <select [(ngModel)]="formData.rating"  name="rating" #rating="ngModel" required>
+            <option value="">--Category--</option>
+            
+            <option  name="1star" value="1">1</option>
+            
+            <option  name="2star" value="2">2</option>
+            
+            <option  name="3star" value="3">3</option>
+
+            <option name="4star" value="4">4</option>
+
+            <option name="5star" value="5">5</option>
+
+          </select>
+
+        </div>
+
+        <div *ngIf="rating.invalid && (rating.dirty || rating.touched)"
+          class="alert alert-danger">
+          <div *ngIf="rating.errors">
+            Rating is required
+          </div>
+        </div>
+
+        <button 
+        type="submit" 
+        class="btn btn-warning"
+        [disabled] = "!addFeedbackForm.form.valid"
+        (click)="userFeed()">
+                submit
+              </button>
+
+              <button type="button" (click)="closeFeed()">Close</button>
+
+        </form>
+    </div>
+    </div>
+    </div>-->
+</body>

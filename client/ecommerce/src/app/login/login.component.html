@@ -1,0 +1,86 @@
+
+<body>
+<div class="row">
+  <h2 >Login</h2>
+    <div class="login">
+      <div class="col-md-5">
+        
+        <form #registerForm="ngForm" id="login">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text"
+                   class="form-control"
+                   [(ngModel)]="formData.name"
+                   name="username"
+                   #username="ngModel"
+                   id="Uname"
+                   required />
+          </div>
+          <div *ngIf="username.invalid && (username.dirty || username.touched)"
+            class="error">
+            <div *ngIf="username.errors">
+              Username is required
+            </div>
+          </div>
+          <br>
+          
+          
+
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password"
+                   class="form-control"
+                    [(ngModel)]="formData.password"
+                    name="password"
+                    #password="ngModel"
+                    id="Pass"
+                   required minlength="6" />
+          </div>
+          <div  class="error" *ngIf="password.invalid && (password.dirty || password.touched)"
+            >
+            
+            <div *ngIf="password.errors && password.errors['required']">
+              Password is required
+            </div>
+            <div *ngIf="password.errors && password.errors['minlength']">Password must be atleast 6 characters</div>
+          </div>
+          <br> 
+          
+          <div class="form-group">
+            <label for="role">Role:</label>
+            <br>
+            <select name="role" [(ngModel)]="formData.role" #role="ngModel" id="role" required>
+                <option  name="user" value="user">User</option>
+                <option  name="admin" value="admin">Admin</option>
+            </select>
+          </div>
+          <div  class="error" *ngIf="role.invalid && (role.dirty || role.touched)"
+            >
+            
+            <div *ngIf="role.errors && role.errors['required']">
+              Role is required
+            </div>
+            </div>
+          <br>
+          
+          <button 
+    type="submit" 
+    class="btn btn-warning"
+    id="log"
+    [disabled] = "!registerForm.form.valid"
+    (click)="login()">
+              Login
+            </button>
+          
+        </form>
+        <br>
+        <button type="button" id="reg" (click)="register()">Register</button>
+        <br>
+        <b class="error">{{response["message"]}}</b>
+      </div>
+    </div>
+</div>
+
+</body>
+
+

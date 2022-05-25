@@ -1,0 +1,110 @@
+<div class="new">
+  <h2>Product Details</h2>
+<form #addProductForm="ngForm" id="new">
+    <div class="form-group">
+      <label for="title">Title:</label>
+      <br>
+      <input type="text"
+             class="form-control"
+             [(ngModel)]="formData.title"
+             name="title"
+             #title="ngModel"
+             id="title"
+             required />
+    </div>
+    <div class="error" *ngIf="title.invalid && (title.dirty || title.touched)"
+      >
+      <div *ngIf="title.errors">
+        Title is required
+      </div>
+    </div>
+
+    <br>
+
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <input type="text"
+             class="form-control"
+              [(ngModel)]="formData.description"
+              name="description"
+              #description="ngModel"
+              id="des"
+             required minlength="6" />
+    </div>
+    <div class="error" *ngIf="description.invalid && (description.dirty || description.touched)"
+      >
+      <div *ngIf="description.errors">
+        Description is required
+      </div>
+      <div *ngIf="description.errors">Description must be atleast 6 characters</div>
+    </div>
+    <br>
+    <div class="form-group">
+      <label for="category">Category:</label>
+      <br>
+      <input type="text"
+      class="form-control"
+      [(ngModel)]="formData.category"
+      name="category"
+      #category="ngModel"
+      id="catg"
+      required />
+    </div>
+    <div class="error" *ngIf="category.invalid && (category.dirty || category.touched)"
+      class="alert alert-danger">
+      <div *ngIf="category.errors">
+        Category is required
+      </div>
+    </div>
+    <br>
+      <div class="form-group">
+        <label for="price">Price:</label>
+        <br>
+        <input type="text"
+        class="form-control"
+        [(ngModel)]="formData.price"
+        name="price"
+        #price="ngModel"
+        id="price"
+        required />
+      </div>
+      <div class="error" *ngIf="price.invalid && (price.dirty || price.touched)"
+        class="alert alert-danger">
+        <div *ngIf="category.errors">
+          Price is required
+        </div>
+      </div>
+      <br>
+
+        <div class="form-group">
+            <label for="images">ImageUrl:</label>
+            <br>
+            <input type="text"
+            class="form-control"
+            [(ngModel)]="formData.images"
+            name="images"
+            #images="ngModel"
+            id="url"
+            required />
+          </div>
+          <div class="error" *ngIf="images.invalid && (images.dirty || images.touched)"
+            class="alert alert-danger">
+            <div *ngIf="category.errors">
+              Image Url is required
+            </div>
+            </div>
+            <br>
+
+    <button 
+type="submit" 
+class="btn btn-warning"
+[disabled] = "!addProductForm.form.valid"
+id="sub"
+(click)="newProd()">
+        submit
+      </button>
+</form>
+<p>{{message["data"]}}</p>
+<button type="button" id="clos"  (click)="close()">Close</button>
+</div>
+
